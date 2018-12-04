@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-PrometheusOperatorVersion=0.23.2
+PrometheusOperatorVersion=0.26.0
 
 if [ -f ../offline-files/sourcecode/prometheus-operator-v$PrometheusOperatorVersion-origin.tar.gz ];then
   echo "File already exists. No need to download again."

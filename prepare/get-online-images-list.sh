@@ -1,19 +1,19 @@
 #!/bin/bash
 set -e
 
-PrometheusOperatorVersion=0.23.2
+PrometheusOperatorVersion=0.26.0
 
 rm -f images-list.txt
 rm -rf prometheus-operator-$PrometheusOperatorVersion
 tar zxf ../offline-files/sourcecode/prometheus-operator-v$PrometheusOperatorVersion-origin.tar.gz
 
 # Maybe no need for other version
-sed -i "s/0.23.0/$PrometheusOperatorVersion/g" prometheus-operator-$PrometheusOperatorVersion/contrib/kube-prometheus/manifests/0prometheus-operator-deployment.yaml
+sed -i "s/0.25.0/$PrometheusOperatorVersion/g" prometheus-operator-$PrometheusOperatorVersion/contrib/kube-prometheus/manifests/0prometheus-operator-deployment.yaml
 
-for file in $(grep -lr "quay.io/coreos" prometheus-operator-0.23.2/contrib/kube-prometheus/manifests/); do cat $file |grep "quay.io/coreos" ; done > image-lists-temp.txt
-for file in $(grep -lr "grafana/grafana" prometheus-operator-0.23.2/contrib/kube-prometheus/manifests/); do cat $file |grep "grafana/grafana" ; done >> image-lists-temp.txt
-for file in $(grep -lr "quay.io/prometheus" prometheus-operator-0.23.2/contrib/kube-prometheus/manifests/); do cat $file |grep "quay.io/prometheus" ; done >> image-lists-temp.txt
-for file in $(grep -lr "gcr.io/" prometheus-operator-0.23.2/contrib/kube-prometheus/manifests/); do cat $file |grep "gcr.io/" ; done >> image-lists-temp.txt
+for file in $(grep -lr "quay.io/coreos" prometheus-operator-$PrometheusOperatorVersion/contrib/kube-prometheus/manifests/); do cat $file |grep "quay.io/coreos" ; done > image-lists-temp.txt
+for file in $(grep -lr "grafana/grafana" prometheus-operator-$PrometheusOperatorVersion/contrib/kube-prometheus/manifests/); do cat $file |grep "grafana/grafana" ; done >> image-lists-temp.txt
+for file in $(grep -lr "quay.io/prometheus" prometheus-operator-$PrometheusOperatorVersion/contrib/kube-prometheus/manifests/); do cat $file |grep "quay.io/prometheus" ; done >> image-lists-temp.txt
+for file in $(grep -lr "gcr.io/" prometheus-operator-$PrometheusOperatorVersion/contrib/kube-prometheus/manifests/); do cat $file |grep "gcr.io/" ; done >> image-lists-temp.txt
 
 prometheus_base_image=`cat prometheus-operator-$PrometheusOperatorVersion/contrib/kube-prometheus/manifests/prometheus-prometheus.yaml |grep "baseImage: " |awk '{print $2}'`
 prometheus_image_tag=`cat prometheus-operator-$PrometheusOperatorVersion/contrib/kube-prometheus/manifests/prometheus-prometheus.yaml |grep "version: " |awk '{print $2}'`
