@@ -3,7 +3,7 @@ set -e
 
 MyImageRepositoryIP=192.168.9.20
 MyImageRepositoryProject=library
-PrometheusOperatorVersion=0.23.2
+PrometheusOperatorVersion=0.26.0
 
 if [ -f ./v$PrometheusOperatorVersion.tar.gz ];then
   echo "File already exists. No need to copy again."

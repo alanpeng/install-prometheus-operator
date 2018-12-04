@@ -1,1 +1,1 @@
-prometheus-operator-images-v0.23.2.tar
+prometheus-operator-images-v0.26.0.tar
