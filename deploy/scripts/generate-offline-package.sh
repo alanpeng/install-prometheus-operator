@@ -3,7 +3,7 @@ set -e
 
 MyImageRepositoryIP=192.168.9.20
 MyImageRepositoryProject=library
-PrometheusOperatorVersion=0.26.0
+PrometheusOperatorVersion=0.27.0
 
 if [ -f ./v$PrometheusOperatorVersion.tar.gz ];then
   echo "File already exists. No need to copy again."
@@ -31,7 +31,7 @@ sed -i '23 r temp.txt' prometheus-operator-$PrometheusOperatorVersion/contrib/ku
 rm -f temp.txt
 
 # Maybe no need for other version
-sed -i "s/0.25.0/$PrometheusOperatorVersion/g" prometheus-operator-$PrometheusOperatorVersion/contrib/kube-prometheus/manifests/0prometheus-operator-deployment.yaml
+sed -i "s/0.26.0/$PrometheusOperatorVersion/g" prometheus-operator-$PrometheusOperatorVersion/contrib/kube-prometheus/manifests/0prometheus-operator-deployment.yaml
 
 # Wait for CRDs to be ready, we need to split all yaml files to two parts
 cd prometheus-operator-$PrometheusOperatorVersion/contrib/kube-prometheus/

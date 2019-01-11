@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-PrometheusOperatorVersion=0.26.0
+PrometheusOperatorVersion=0.27.0
 NAMESPACE=monitoring
 
 rm -rf prometheus-operator-$PrometheusOperatorVersion

@@ -6,7 +6,7 @@ MyImageRepositoryProject=library
 MyImageRepositoryUser="admin"
 MyImageRepositoryPassword="Harbor12345"
 
-PrometheusOperatorVersion=0.26.0
+PrometheusOperatorVersion=0.27.0
 
 docker load -i ../../offline-files/images/prometheus-operator-images-v$PrometheusOperatorVersion.tar
 
