@@ -52,7 +52,7 @@ kubectl apply -f kube-dns.yaml
 kubectl -n monitoring apply -f prometheus-k8s-service-monitor-kube-dns.yaml 
 ```
 
-### kube-controller-manager / kube-scheduler
+### kube-controller-manager / kube-scheduler / coredns
 ```
 cd deploy/addon-exporter/
 kubectl apply -f k8s/
