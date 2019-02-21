@@ -1,14 +1,14 @@
 #!/bin/bash
 set -e
 
-PrometheusOperatorVersion=0.28.0
+PrometheusOperatorVersion=0.29.0
 
 rm -f images-list.txt
 rm -rf prometheus-operator-$PrometheusOperatorVersion
 tar zxf ../offline-files/sourcecode/prometheus-operator-v$PrometheusOperatorVersion-origin.tar.gz
 
 # Fix issue 2291 of prometheus operator
-sed -i "s/0.27.0/$PrometheusOperatorVersion/g" prometheus-operator-$PrometheusOperatorVersion/contrib/kube-prometheus/manifests/0prometheus-operator-deployment.yaml
+sed -i "s/0.28.0/$PrometheusOperatorVersion/g" prometheus-operator-$PrometheusOperatorVersion/contrib/kube-prometheus/manifests/0prometheus-operator-deployment.yaml
 
 for file in $(grep -lr "quay.io/coreos" prometheus-operator-$PrometheusOperatorVersion/contrib/kube-prometheus/manifests/); do cat $file |grep "quay.io/coreos" ; done > image-lists-temp.txt
 for file in $(grep -lr "grafana/grafana" prometheus-operator-$PrometheusOperatorVersion/contrib/kube-prometheus/manifests/); do cat $file |grep "grafana/grafana" ; done >> image-lists-temp.txt

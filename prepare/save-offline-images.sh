@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-PrometheusOperatorVersion=0.28.0
+PrometheusOperatorVersion=0.29.0
 
 for file in $(cat images-list.txt); do docker pull $file; done
 
